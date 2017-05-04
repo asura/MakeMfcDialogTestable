@@ -1,13 +1,20 @@
-// logicTest.cpp : コンソール アプリケーションのエントリ ポイントを定義します。
-//
-
 #include "stdafx.h"
-#define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
+#include "logic.h"
 
-int main(int argc, char** argv)
+SCENARIO("生成→追加", "[logic]")
 {
-	const int result = Catch::Session().run(argc, argv);
-	return (result < 0xFF ? result : 0xFF);
-}
+	Logic sut;
+	REQUIRE(sut.GetList().empty());
 
+	WHEN("項目を追加する")
+	{
+		sut.Add(L"abc");
+
+		THEN("リストに追加項目が増える")
+		{
+			REQUIRE(sut.GetList().size() == 1);
+			CHECK(sut.GetList()[0] == L"abc");
+		}
+	}
+}

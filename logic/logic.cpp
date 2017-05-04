@@ -1,22 +1,12 @@
-// logic.cpp : DLL アプリケーション用にエクスポートされる関数を定義します。
-//
-
 #include "stdafx.h"
 #include "logic.h"
 
-
-// これは、エクスポートされた変数の例です。
-LOGIC_API int nlogic=0;
-
-// これは、エクスポートされた関数の例です。
-LOGIC_API int fnlogic(void)
+const std::vector<std::wstring>& Logic::GetList() const
 {
-	return 42;
+	return m_list;
 }
 
-// これは、エクスポートされたクラスのコンストラクターです。
-// クラス定義に関しては logic.h を参照してください。
-Clogic::Clogic()
+void Logic::Add(const std::wstring& item_name)
 {
-	return;
+	m_list.push_back(item_name);
 }

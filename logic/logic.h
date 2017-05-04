@@ -1,22 +1,18 @@
-// 以下の ifdef ブロックは DLL からのエクスポートを容易にするマクロを作成するための 
-// 一般的な方法です。この DLL 内のすべてのファイルは、コマンド ラインで定義された LOGIC_EXPORTS
-// シンボルを使用してコンパイルされます。このシンボルは、この DLL を使用するプロジェクトでは定義できません。
-// ソースファイルがこのファイルを含んでいる他のプロジェクトは、 
-// LOGIC_API 関数を DLL からインポートされたと見なすのに対し、この DLL は、このマクロで定義された
-// シンボルをエクスポートされたと見なします。
-#ifdef LOGIC_EXPORTS
-#define LOGIC_API __declspec(dllexport)
-#else
-#define LOGIC_API __declspec(dllimport)
-#endif
+#pragma once
+#include "logic_export.h"
+#include <string>
+#include <vector>
 
-// このクラスは logic.dll からエクスポートされました。
-class LOGIC_API Clogic {
+#pragma warning(disable: 4251)
+
+class LOGIC_API Logic
+{
+	std::vector<std::wstring> m_list;
+
 public:
-	Clogic(void);
-	// TODO: メソッドをここに追加してください。
+	Logic() = default;
+	~Logic() = default;
+
+	const std::vector<std::wstring>& GetList() const;
+	void Add(const std::wstring& item_name);
 };
-
-extern LOGIC_API int nlogic;
-
-LOGIC_API int fnlogic(void);
