@@ -25,11 +25,14 @@ CSampleAppDlg::CSampleAppDlg(CWnd* pParent /*=NULL*/)
 void CSampleAppDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_EDT_ITEM, m_edt_item);
+	DDX_Control(pDX, IDC_LST_ITEMS, m_lst_items);
 }
 
 BEGIN_MESSAGE_MAP(CSampleAppDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BTN_ADD, &CSampleAppDlg::OnBnClickedBtnAdd)
 END_MESSAGE_MAP()
 
 
@@ -44,9 +47,20 @@ BOOL CSampleAppDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 大きいアイコンの設定
 	SetIcon(m_hIcon, FALSE);		// 小さいアイコンの設定
 
-	// TODO: 初期化をここに追加します。
+	UpdateList();
 
 	return TRUE;  // フォーカスをコントロールに設定した場合を除き、TRUE を返します。
+}
+
+void CSampleAppDlg::UpdateList()
+{
+	m_lst_items.ResetContent();
+
+	const auto& items = m_logic.GetList();
+	for (const auto& item : items)
+	{
+		m_lst_items.AddString(item.c_str());
+	}
 }
 
 // ダイアログに最小化ボタンを追加する場合、アイコンを描画するための
@@ -85,3 +99,12 @@ HCURSOR CSampleAppDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CSampleAppDlg::OnBnClickedBtnAdd()
+{
+	CString item_name;
+	m_edt_item.GetWindowText(item_name);
+
+	m_logic.Add((LPCWSTR)item_name);
+
+	UpdateList();
+}
