@@ -4,6 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SampleApp", "SampleApp\SampleApp.vcxproj", "{7079508C-60D3-49C8-9750-136C8D737A18}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5D71C6B6-27C6-4B73-A647-92D1B60F27B3} = {5D71C6B6-27C6-4B73-A647-92D1B60F27B3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logic", "logic\logic.vcxproj", "{5D71C6B6-27C6-4B73-A647-92D1B60F27B3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logicTest", "logicTest\logicTest.vcxproj", "{89C95595-55DB-4905-B77F-640E0DF826E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5D71C6B6-27C6-4B73-A647-92D1B60F27B3} = {5D71C6B6-27C6-4B73-A647-92D1B60F27B3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,14 @@ Global
 		{7079508C-60D3-49C8-9750-136C8D737A18}.Debug|Win32.Build.0 = Debug|Win32
 		{7079508C-60D3-49C8-9750-136C8D737A18}.Release|Win32.ActiveCfg = Release|Win32
 		{7079508C-60D3-49C8-9750-136C8D737A18}.Release|Win32.Build.0 = Release|Win32
+		{5D71C6B6-27C6-4B73-A647-92D1B60F27B3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5D71C6B6-27C6-4B73-A647-92D1B60F27B3}.Debug|Win32.Build.0 = Debug|Win32
+		{5D71C6B6-27C6-4B73-A647-92D1B60F27B3}.Release|Win32.ActiveCfg = Release|Win32
+		{5D71C6B6-27C6-4B73-A647-92D1B60F27B3}.Release|Win32.Build.0 = Release|Win32
+		{89C95595-55DB-4905-B77F-640E0DF826E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{89C95595-55DB-4905-B77F-640E0DF826E5}.Debug|Win32.Build.0 = Debug|Win32
+		{89C95595-55DB-4905-B77F-640E0DF826E5}.Release|Win32.ActiveCfg = Release|Win32
+		{89C95595-55DB-4905-B77F-640E0DF826E5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
