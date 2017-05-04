@@ -2,10 +2,12 @@
 //
 
 #include "stdafx.h"
-#include "logic.h"
+#define CATCH_CONFIG_RUNNER
+#include <catch.hpp>
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char** argv)
 {
-	return 0;
+	const int result = Catch::Session().run(argc, argv);
+	return (result < 0xFF ? result : 0xFF);
 }
 
