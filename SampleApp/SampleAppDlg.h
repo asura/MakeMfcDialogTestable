@@ -3,13 +3,13 @@
 //
 
 #pragma once
-#include "logic.h"
+#include "UiLogic.h"
 #include "afxwin.h"
 
 // CSampleAppDlg ダイアログ
 class CSampleAppDlg : public CDialogEx
 {
-	Logic m_logic;
+	UiLogic<CListBox, CEdit> m_logic;
 
 // コンストラクション
 public:
@@ -21,8 +21,6 @@ public:
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV サポート
 
-private:
-	void UpdateList();
 
 // 実装
 protected:

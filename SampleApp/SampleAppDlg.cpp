@@ -47,20 +47,12 @@ BOOL CSampleAppDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 大きいアイコンの設定
 	SetIcon(m_hIcon, FALSE);		// 小さいアイコンの設定
 
-	UpdateList();
+	m_logic.SetLstItems(&m_lst_items);
+	m_logic.SetEdtItem(&m_edt_item);
+
+	m_logic.UpdateList();
 
 	return TRUE;  // フォーカスをコントロールに設定した場合を除き、TRUE を返します。
-}
-
-void CSampleAppDlg::UpdateList()
-{
-	m_lst_items.ResetContent();
-
-	const auto& items = m_logic.GetList();
-	for (const auto& item : items)
-	{
-		m_lst_items.AddString(item.c_str());
-	}
 }
 
 // ダイアログに最小化ボタンを追加する場合、アイコンを描画するための
@@ -101,10 +93,5 @@ HCURSOR CSampleAppDlg::OnQueryDragIcon()
 
 void CSampleAppDlg::OnBnClickedBtnAdd()
 {
-	CString item_name;
-	m_edt_item.GetWindowText(item_name);
-
-	m_logic.Add((LPCWSTR)item_name);
-
-	UpdateList();
+	m_logic.Add();
 }
