@@ -12,6 +12,8 @@
 
 (ロジックが単純なため却って複雑になっており、良いサンプルではない…)
 
+![スクリーンショット](docs/SampleApp.png)
+
 #### before
 
 ![before](docs/before.png)
@@ -24,6 +26,8 @@
 
 1つのイベント中で複数のUIコントロールを協調させている場合、その部分にも複雑なロジックが発生するかもしれない。
 そこまで含めたユニットテストを書きたい場合、UIコントロールのモックを作り、それらに対する呼び出しをテストすることもできる。
+(→ [UiLogicTest.cpp](https://github.com/asura/MakeMfcDialogTestable/blob/master/logicTest/UiLogicTest.cpp))
+
 が、課題もある…
 
 ### 課題

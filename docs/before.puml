@@ -3,13 +3,13 @@ Actor "ユーザ" as user
 participant CSampleAppDlg
 participant CEdit
 participant CListBox
-user -> CSampleAppDlg : "「追加」ボタン押下"
+user -> CSampleAppDlg : 「追加」ボタン押下
 activate CSampleAppDlg
   CSampleAppDlg -> CSampleAppDlg : OnBnClickedBtnAdd()
   activate CSampleAppDlg
     CSampleAppDlg -> CEdit : GetWindowText()
-    CSampleAppDlg <-- CEdit : "文字列"
-    CSampleAppDlg -> CListBox : "AddString(文字列)"
+    CSampleAppDlg <-- CEdit : 文字列
+    CSampleAppDlg -> CListBox : AddString(文字列)
   deactivate CSampleAppDlg
 deactivate CSampleAppDlg
 @enduml
