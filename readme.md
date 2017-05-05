@@ -14,67 +14,11 @@
 
 #### before
 
-![before](http://gravizo.com/g?%40startuml%3BActor%20%E3%83%A6%E3%83%BC%E3%82%B6%20as%20user%3Bparticipant%20CSampleAppDlg%3Bparticipant%20CEdit%3Bparticipant%20CListBox%3Buser%20-%3E%20CSampleAppDlg%20%3A%20%E3%80%8C%E8%BF%BD%E5%8A%A0%E3%80%8D%E3%83%9C%E3%82%BF%E3%83%B3%E6%8A%BC%E4%B8%8B%3Bactivate%20CSampleAppDlg%3B%20%20CSampleAppDlg%20-%3E%20CSampleAppDlg%20%3A%20OnBnClickedBtnAdd()%3B%20%20activate%20CSampleAppDlg%3B%20%20%20%20CSampleAppDlg%20-%3E%20CEdit%20%3A%20GetWindowText()%3B%20%20%20%20CSampleAppDlg%20%3C--%20CEdit%20%3A%20%E6%96%87%E5%AD%97%E5%88%97%3B%20%20%20%20CSampleAppDlg%20-%3E%20CListBox%20%3A%20AddString(%E6%96%87%E5%AD%97%E5%88%97)%3B%20%20deactivate%20CSampleAppDlg%3Bdeactivate%20CSampleAppDlg%3B%40enduml%3B)
-<!--
-@startuml
-Actor ユーザ as user
-participant CSampleAppDlg
-participant CEdit
-participant CListBox
-
-user -> CSampleAppDlg : 「追加」ボタン押下
-activate CSampleAppDlg
-  CSampleAppDlg -> CSampleAppDlg : OnBnClickedBtnAdd()
-  activate CSampleAppDlg
-    CSampleAppDlg -> CEdit : GetWindowText()
-    CSampleAppDlg <-- CEdit : 文字列
-    CSampleAppDlg -> CListBox : AddString(文字列)
-  deactivate CSampleAppDlg
-deactivate CSampleAppDlg
-
-@enduml
--->
+![before](docs/before.png)
 
 #### after
 
-![after](http://gravizo.com/g?%40startuml%3BActor%20%E3%83%A6%E3%83%BC%E3%82%B6%20as%20user%3Bparticipant%20CSampleAppDlg%3Bparticipant%20CEdit%3Bparticipant%20CListBox%3Bparticipant%20CLogic%3Bparticipant%20%22std%3A%3Avector%22%20as%20vector%3Buser%20-%3E%20CSampleAppDlg%20%3A%20%E3%80%8C%E8%BF%BD%E5%8A%A0%E3%80%8D%E3%83%9C%E3%82%BF%E3%83%B3%E6%8A%BC%E4%B8%8B%3Bactivate%20CSampleAppDlg%3B%20%20CSampleAppDlg%20-%3E%20CSampleAppDlg%20%3A%20OnBnClickedBtnAdd()%3B%20%20activate%20CSampleAppDlg%3B%20%20%20%20CSampleAppDlg%20-%3E%20CEdit%20%3A%20GetWindowText()%3B%20%20%20%20CSampleAppDlg%20%3C--%20CEdit%20%3A%20%E6%96%87%E5%AD%97%E5%88%97%3B%20%20%20%20CSampleAppDlg%20-%3E%20CLogic%20%3A%20Add(%E6%96%87%E5%AD%97%E5%88%97)%3B%20%20%20%20activate%20CLogic%3B%20%20%20%20%20%20CLogic%20-%3E%20vector%20%3A%20push_back(%E6%96%87%E5%AD%97%E5%88%97)%3B%20%20%20%20deactivate%20CLogic%3B%20%20%20%20CSampleAppDlg%20-%3E%20CSampleAppDlg%20%3A%20UpdateList%3B%20%20%20%20activate%20CSampleAppDlg%3B%20%20%20%20%20%20CSampleAppDlg%20-%3E%20CListBox%20%3A%20ResetContent()%3B%20%20%20%20%20%20CSampleAppDlg%20-%3E%20CLogic%20%3A%20GetList()%3B%20%20%20%20%20%20activate%20CLogic%3B%20%20%20%20%20%20%20%20CSampleAppDlg%20%3C--%20CLogic%20%3A%20vector%3B%20%20%20%20%20%20deactivate%20CLogic%3Bloop%3B%20%20%20%20%20%20CSampleAppDlg%20-%3E%20CListBox%20%3A%20AddString(%E6%96%87%E5%AD%97%E5%88%97)%3Bend%3B%20%20%20%20deactivate%20CSampleAppDlg%3B%20%20deactivate%20CSampleAppDlg%3Bdeactivate%20CSampleAppDlg%3B%40enduml%3B)
-<!--
-@startuml
-Actor ユーザ as user
-participant CSampleAppDlg
-participant CEdit
-participant CListBox
-participant CLogic
-participant "std::vector" as vector
-
-user -> CSampleAppDlg : 「追加」ボタン押下
-activate CSampleAppDlg
-  CSampleAppDlg -> CSampleAppDlg : OnBnClickedBtnAdd()
-  activate CSampleAppDlg
-    CSampleAppDlg -> CEdit : GetWindowText()
-    CSampleAppDlg <-- CEdit : 文字列
-    CSampleAppDlg -> CLogic : Add(文字列)
-    activate CLogic
-      CLogic -> vector : push_back(文字列)
-    deactivate CLogic
-
-    CSampleAppDlg -> CSampleAppDlg : UpdateList
-    activate CSampleAppDlg
-      CSampleAppDlg -> CListBox : ResetContent()
-      CSampleAppDlg -> CLogic : GetList()
-      activate CLogic
-        CSampleAppDlg <-- CLogic : vector
-      deactivate CLogic
-loop
-      CSampleAppDlg -> CListBox : AddString(文字列)
-end
-    deactivate CSampleAppDlg
-
-  deactivate CSampleAppDlg
-deactivate CSampleAppDlg
-
-@enduml
--->
+![after](docs/after.png)
 
 ## (解決策2) UIコントロールをモック化
 

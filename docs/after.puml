@@ -1,0 +1,35 @@
+@startuml
+Actor ユーザ as user
+participant CSampleAppDlg
+participant CEdit
+participant CListBox
+participant CLogic
+participant "std::vector" as vector
+
+user -> CSampleAppDlg : 「追加」ボタン押下
+activate CSampleAppDlg
+  CSampleAppDlg -> CSampleAppDlg : OnBnClickedBtnAdd()
+  activate CSampleAppDlg
+    CSampleAppDlg -> CEdit : GetWindowText()
+    CSampleAppDlg <-- CEdit : 文字列
+    CSampleAppDlg -> CLogic : Add(文字列)
+    activate CLogic
+      CLogic -> vector : push_back(文字列)
+    deactivate CLogic
+
+    CSampleAppDlg -> CSampleAppDlg : UpdateList
+    activate CSampleAppDlg
+      CSampleAppDlg -> CListBox : ResetContent()
+      CSampleAppDlg -> CLogic : GetList()
+      activate CLogic
+        CSampleAppDlg <-- CLogic : vector
+      deactivate CLogic
+loop
+      CSampleAppDlg -> CListBox : AddString(文字列)
+end
+    deactivate CSampleAppDlg
+
+  deactivate CSampleAppDlg
+deactivate CSampleAppDlg
+
+@enduml
